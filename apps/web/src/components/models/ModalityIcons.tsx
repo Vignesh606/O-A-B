@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { FileText, Image as ImageIcon, Video, Mic, Type } from "lucide-react";
+import { FileText, ImageIcon, Video, Mic, Type } from "lucide-react";
 
 export type ModalityType = "text" | "image" | "video" | "audio" | "pdf";
 
@@ -12,7 +12,7 @@ interface ModalityIconsProps {
 
 export const MODALITY_CONFIG: Record<
   ModalityType,
-  { label: string; icon: React.ComponentType<{ size?: number; className?: string }>; color: string }
+  { label: string; icon: any; color: string }
 > = {
   text: { label: "Text", icon: Type, color: "#635BFF" },
   image: { label: "Image", icon: ImageIcon, color: "#EC4899" },
@@ -43,7 +43,7 @@ export default function ModalityIcons({ modalities = ["text"], size = 13 }: Moda
             title={config.label}
             className="inline-flex items-center justify-center w-6 h-6 rounded bg-[#F4F4F0] text-[#444444] hover:bg-[#EEF2FF] hover:text-[#635BFF] transition-colors cursor-help border border-[#E8E8E2]"
           >
-            <IconComponent size={size} />
+            {IconComponent ? <IconComponent size={size} /> : null}
           </span>
         );
       })}
